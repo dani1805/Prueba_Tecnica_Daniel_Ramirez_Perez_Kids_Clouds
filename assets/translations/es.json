@@ -1,6 +1,17 @@
 {
     "home-page": {
-        "app_bar_title": "Luis López",
-        "main_title": "Agenda diaria"
+        "app_bar_title": "Hola, Luis López",
+        "main_title": "Agenda diaria",
+        "title_item_daniel": "Daniel",
+        "title_item_hugo": "Hugo",
+        "title_item_ana": "Ana",
+        "title_activity_food": "Alimentación",
+        "title_activity_naps": "Siestas",
+        "title_activity_activities": "Actividades",
+        "title_activity_bowel_movements": "Deposiciones",
+        "title_activity_observations": "Observaciones",
+        "title_empty_activity": "No hay registro para esta actividad"
+
+
     }
 }

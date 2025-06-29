@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/data/entity/event_model.dart';
-import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/mock/mock_events.dart';
+import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/mock/mock_data.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -14,7 +14,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
     on<HomePageLoaded>((event, emit) async {
       emit(HomeLoading());
-      events = MockEvents.events;
+      events = MockData.events;
       emit(HomeLoaded());
     });
 
@@ -23,10 +23,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       child = event.child;
       events =
           activity != null
-              ? MockEvents.events
+              ? MockData.events
                   .where((x) => x.child == child && x.activity == activity)
                   .toList()
-              : MockEvents.events.where((x) => x.child == child).toList();
+              : MockData.events.where((x) => x.child == child).toList();
 
       emit(HomeLoaded());
     });
@@ -34,16 +34,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<ButtonActivityPressed>((event, emit) async {
       emit(HomeLoading());
       activity = event.activity;
-      print(activity);
 
       events =
           child != null
-              ? MockEvents.events
+              ? MockData.events
                   .where(
                     (x) => x.child == child && x.activity == event.activity,
                   )
                   .toList()
-              : MockEvents.events
+              : MockData.events
                   .where((x) => x.activity == event.activity)
                   .toList();
       emit(HomeLoaded());

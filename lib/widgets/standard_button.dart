@@ -1,6 +1,7 @@
 // ignore_for_file: use_super_parameters
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StandardButton extends StatelessWidget {
   const StandardButton({
@@ -38,7 +39,7 @@ class StandardButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: color),
+            style: GoogleFonts.openSans(fontSize: 15),
             textAlign: TextAlign.center,
           ),
         ),

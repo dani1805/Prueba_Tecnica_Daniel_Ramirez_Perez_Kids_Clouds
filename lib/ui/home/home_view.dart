@@ -1,9 +1,12 @@
-// ignore_for_file: type_literal_in_constant_pattern
+// ignore_for_file: type_literal_in_constant_pattern, deprecated_member_use
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/helpers/assets.dart';
+import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/helpers/colors.dart';
+import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/mock/mock_data.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/ui/home/home_bloc.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_app_bar.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_button.dart';
@@ -33,15 +36,15 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Mcolor.pastel.withOpacity(0.3),
       appBar: StandardAppBar(
         elevation: 0,
-        background: Colors.blue,
+        background: Mcolor.pastel,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 10),
             child: PopupMenuButton<int>(
-              icon: Icon(Icons.menu, color: Colors.white),
+              icon: Icon(Icons.menu, color: Mcolor.blue),
               onSelected: (int item) {
                 context.read<HomeBloc>().add(ButtonChildPressed(child: item));
               },
@@ -50,22 +53,22 @@ class _HomeViewState extends State<HomeView> {
                     PopupMenuItem<int>(
                       value: 0,
                       child: StandardKidsItem(
-                        image: Assets.appKidsIcon,
-                        title: 'Daniel',
+                        image: Children.daniel.image,
+                        title: 'home-page.title_item_daniel'.tr(),
                       ),
                     ),
                     PopupMenuItem<int>(
                       value: 1,
                       child: StandardKidsItem(
-                        image: Assets.appKidsIcon,
-                        title: 'Hugo',
+                        image: Children.hugo.image,
+                        title: 'home-page.title_item_hugo'.tr(),
                       ),
                     ),
                     PopupMenuItem<int>(
                       value: 2,
                       child: StandardKidsItem(
-                        image: Assets.appKidsIcon,
-                        title: 'Ana',
+                        image: Children.ana.image,
+                        title: 'home-page.title_item_ana'.tr(),
                       ),
                     ),
                   ],
@@ -85,9 +88,15 @@ class _HomeViewState extends State<HomeView> {
                 final events = context.read<HomeBloc>().events;
                 final activity = context.read<HomeBloc>().activity;
                 return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('home-page.main_title'.tr()),
+                    Text(
+                      'home-page.main_title'.tr(),
+                      style: GoogleFonts.openSans(
+                        fontSize: 25,
+                        color: Mcolor.blue,
+                      ),
+                    ),
                     SizedBox(height: 20),
                     SizedBox(
                       height: size.height * .1,
@@ -96,16 +105,12 @@ class _HomeViewState extends State<HomeView> {
                         child: Row(
                           children: [
                             StandardButton(
-                              text: 'Alimentación',
+                              text: 'home-page.title_activity_food'.tr(),
                               color:
-                                  activity == 0
-                                      ? Colors.white
-                                      : Colors.blueAccent,
+                                  activity == 0 ? Colors.white : Mcolor.pastel,
                               background:
-                                  activity == 0
-                                      ? Colors.blueAccent
-                                      : Colors.white,
-                              border: Colors.blueAccent,
+                                  activity == 0 ? Mcolor.pastel : Colors.white,
+                              border: Mcolor.pastel,
                               onTap:
                                   () => context.read<HomeBloc>().add(
                                     ButtonActivityPressed(activity: 0),
@@ -113,16 +118,12 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             SizedBox(width: 10),
                             StandardButton(
-                              text: 'Siestas',
+                              text: 'home-page.title_activity_naps'.tr(),
                               color:
-                                  activity == 1
-                                      ? Colors.white
-                                      : Colors.blueAccent,
+                                  activity == 1 ? Colors.white : Mcolor.pastel,
                               background:
-                                  activity == 1
-                                      ? Colors.blueAccent
-                                      : Colors.white,
-                              border: Colors.blueAccent,
+                                  activity == 1 ? Mcolor.pastel : Colors.white,
+                              border: Mcolor.pastel,
                               onTap:
                                   () => context.read<HomeBloc>().add(
                                     ButtonActivityPressed(activity: 1),
@@ -130,16 +131,13 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             SizedBox(width: 10),
                             StandardButton(
-                              text: 'Actividades',
+                              key: Key('activities_key'),
+                              text: 'home-page.title_activity_activities'.tr(),
                               color:
-                                  activity == 2
-                                      ? Colors.white
-                                      : Colors.blueAccent,
+                                  activity == 2 ? Colors.white : Mcolor.pastel,
                               background:
-                                  activity == 2
-                                      ? Colors.blueAccent
-                                      : Colors.white,
-                              border: Colors.blueAccent,
+                                  activity == 2 ? Mcolor.pastel : Colors.white,
+                              border: Mcolor.pastel,
                               onTap:
                                   () => context.read<HomeBloc>().add(
                                     ButtonActivityPressed(activity: 2),
@@ -147,16 +145,14 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             SizedBox(width: 10),
                             StandardButton(
-                              text: 'Deposiciones',
+                              text:
+                                  'home-page.title_activity_bowel_movements'
+                                      .tr(),
                               color:
-                                  activity == 3
-                                      ? Colors.white
-                                      : Colors.blueAccent,
+                                  activity == 3 ? Colors.white : Mcolor.pastel,
                               background:
-                                  activity == 3
-                                      ? Colors.blueAccent
-                                      : Colors.white,
-                              border: Colors.blueAccent,
+                                  activity == 3 ? Mcolor.pastel : Colors.white,
+                              border: Mcolor.pastel,
                               onTap:
                                   () => context.read<HomeBloc>().add(
                                     ButtonActivityPressed(activity: 3),
@@ -164,16 +160,13 @@ class _HomeViewState extends State<HomeView> {
                             ),
                             SizedBox(width: 10),
                             StandardButton(
-                              text: 'Observaciones',
+                              text:
+                                  'home-page.title_activity_observations'.tr(),
                               color:
-                                  activity == 4
-                                      ? Colors.white
-                                      : Colors.blueAccent,
+                                  activity == 4 ? Colors.white : Mcolor.pastel,
                               background:
-                                  activity == 4
-                                      ? Colors.blueAccent
-                                      : Colors.white,
-                              border: Colors.blueAccent,
+                                  activity == 4 ? Mcolor.pastel : Colors.white,
+                              border: Mcolor.pastel,
                               onTap:
                                   () => context.read<HomeBloc>().add(
                                     ButtonActivityPressed(activity: 4),
@@ -184,7 +177,6 @@ class _HomeViewState extends State<HomeView> {
                       ),
                     ),
                     SizedBox(height: 20),
-
                     Expanded(
                       child:
                           events.isNotEmpty
@@ -205,28 +197,43 @@ class _HomeViewState extends State<HomeView> {
                                             children: [
                                               Flexible(
                                                 flex: 1,
-                                                child: Image.network(
-                                                  event.image,
-                                                  width: size.width * .2,
-                                                  height: size.width * .2,
+                                                child: CircleAvatar(
+                                                  backgroundColor:
+                                                      Mcolor.pastel,
+                                                  radius: 50,
+                                                  backgroundImage: NetworkImage(
+                                                    event.image,
+                                                  ),
                                                 ),
                                               ),
+                                              SizedBox(width: 10),
 
                                               Flexible(
                                                 flex: 2,
-                                                child: Text(event.name),
+                                                child: Text(
+                                                  event.name,
+                                                  style: GoogleFonts.openSans(
+                                                    color: Mcolor.brown,
+                                                  ),
+                                                ),
                                               ),
                                             ],
                                           ),
                                           SizedBox(height: 10),
                                           Text(
                                             event.date,
-                                            style: TextStyle(
-                                              color: Colors.grey,
+                                            style: GoogleFonts.openSans(
+                                              color: Colors.blueGrey,
+                                              fontSize: 15, // LANLA
                                             ),
                                           ),
                                           SizedBox(height: 20),
-                                          Text(event.description),
+                                          Text(
+                                            event.description,
+                                            style: GoogleFonts.openSans(
+                                              fontSize: 15,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -237,7 +244,13 @@ class _HomeViewState extends State<HomeView> {
                               )
                               : Center(
                                 child: Text(
-                                  'No hay registro disponibles para esta actividad',
+                                  'home-page.title_empty_activity'.tr(),
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.openSans(
+                                    fontSize: 20,
+                                    color: Mcolor.blue,
+                                    fontStyle: FontStyle.italic,
+                                  ),
                                 ),
                               ),
                     ),

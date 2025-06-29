@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/helpers/colors.dart';
 
 class StandardKidsItem extends StatelessWidget {
   const StandardKidsItem({super.key, required this.image, required this.title});
@@ -9,12 +11,17 @@ class StandardKidsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(image, width: MediaQuery.of(context).size.width * 0.05),
+        CircleAvatar(
+          backgroundColor: Mcolor.pastel,
+          backgroundImage: NetworkImage(image),
+        ),
         SizedBox(width: 10),
-        Text(title),
+        Text(title, style: GoogleFonts.openSans(color: Mcolor.blue)),
       ],
     );
   }
 }
+
+//

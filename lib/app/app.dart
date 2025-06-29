@@ -34,25 +34,9 @@ class _AppState extends State<App> {
               return supportedLocale;
             }
           }
-          return const Locale('en');
+          return const Locale('es');
         },
         debugShowCheckedModeBanner: false,
-        /*builder: (context, child) {
-            return BlocListener<AuthenticationBloc, AuthenticationState>(
-              listener: (context, state) async {
-                switch (state.runtimeType) {
-                  case AuthenticationUnauthenticated:
-                    appRouter.go(Routes.login);
-                    break;
-                  case AuthenticationAuthenticated:
-                    appRouter.go(Routes.home);
-                }
-              },
-              child: BlocBuilder<LanguageBloc, LanguageState>(
-                builder: (context, state) => child ?? const SizedBox.shrink(),
-              ),
-            );
-          },*/
       ),
     );
   }

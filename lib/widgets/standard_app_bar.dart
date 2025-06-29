@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/helpers/colors.dart';
 
 class StandardAppBar extends StatelessWidget implements PreferredSize {
   const StandardAppBar({
@@ -20,7 +22,10 @@ class StandardAppBar extends StatelessWidget implements PreferredSize {
     return AppBar(
       backgroundColor: background,
       elevation: elevation,
-      title: Center(child: Text(('home-page.app_bar_title'.tr()))),
+      title: Text(
+        ('home-page.app_bar_title'.tr()),
+        style: GoogleFonts.openSans(fontSize: 15, color: Mcolor.blue),
+      ),
       titleTextStyle: const TextStyle(fontSize: 16),
       centerTitle: false,
       actions: [if (actions != null) ...actions!],
