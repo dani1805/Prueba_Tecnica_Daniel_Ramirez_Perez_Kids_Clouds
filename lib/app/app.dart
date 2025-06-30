@@ -18,6 +18,7 @@ class _AppState extends State<App> {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (_) => getIt<HomeBloc>())],
       child: MaterialApp.router(
+        title: 'Agenda Diaria',
         routerConfig: appRouter,
         locale: context.locale,
         theme: ThemeData(

@@ -4,12 +4,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/helpers/assets.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/app/helpers/colors.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/mock/mock_data.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/ui/home/home_bloc.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_app_bar.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_button.dart';
+import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_event_card.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_kids_item.dart';
 import 'package:prueba_tecnica_daniel_ramirez_kids_clouds/widgets/standard_loading.dart';
 
@@ -185,59 +185,7 @@ class _HomeViewState extends State<HomeView> {
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
                                   final event = events.elementAt(index);
-                                  return Card(
-                                    color: Colors.white,
-                                    child: Container(
-                                      padding: EdgeInsets.all(10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Flexible(
-                                                flex: 1,
-                                                child: CircleAvatar(
-                                                  backgroundColor:
-                                                      Mcolor.pastel,
-                                                  radius: 50,
-                                                  backgroundImage: NetworkImage(
-                                                    event.image,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(width: 10),
-
-                                              Flexible(
-                                                flex: 2,
-                                                child: Text(
-                                                  event.name,
-                                                  style: GoogleFonts.openSans(
-                                                    color: Mcolor.brown,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(height: 10),
-                                          Text(
-                                            event.date,
-                                            style: GoogleFonts.openSans(
-                                              color: Colors.blueGrey,
-                                              fontSize: 15, // LANLA
-                                            ),
-                                          ),
-                                          SizedBox(height: 20),
-                                          Text(
-                                            event.description,
-                                            style: GoogleFonts.openSans(
-                                              fontSize: 15,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
+                                  return StandardEventCard(event: event);
                                 },
                                 separatorBuilder:
                                     (context, index) => SizedBox(height: 10),
